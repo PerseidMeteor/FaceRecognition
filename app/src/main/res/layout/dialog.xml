@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_style">
+
+    <RelativeLayout
+        android:id="@+id/btnPickByTake"
+        android:layout_width="match_parent"
+        android:clickable="true"
+        android:layout_height="wrap_content"
+        android:focusable="true">
+
+        <TextView
+            android:id="@+id/text3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/btOpenCamera"
+            android:textSize="20sp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:textColor="#1685ff"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#dadade"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/text3"/>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/btnPickBySelect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:layout_below="@+id/btnPickByTake"
+        android:focusable="true">
+
+        <TextView
+            android:id="@+id/text4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btOpenAlbum"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:textColor="#1685ff"/>
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#dadade"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/text4"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/gap"
+        android:layout_width="match_parent"
+        android:clickable="false"
+        android:layout_height="10dp"
+        android:layout_below="@+id/btnPickBySelect"
+        android:background="#C0C0C0"
+        android:focusable="true">
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/btnCancel"
+        android:layout_width="match_parent"
+        android:clickable="true"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gap"
+        android:focusable="true">
+
+        <TextView
+            android:id="@+id/text5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/btCancel"
+            android:textSize="20sp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:textColor="#1685ff"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#dadade"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/text5"/>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">FaceRecognition</string>
+    <string name="btOpenAlbum">打开相册</string>
+    <string name="btOpenCamera">拍照</string>
+    <string name="btAddPicture">添加图片</string>
+    <string name="btMatch">开始匹配</string>
+    <string name="tvVersion">1.0 beta</string>
+    <string name="btCancel">取消</string>
+    <string name="title_activity_match">MatchActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="image_description">人脸分割图像</string>
+    <string name="脸相似度">脸相似度:</string>
+    <string name="Nose_Similarity">鼻子相似度:</string>
+    <string name="Eyes_Similaity">眼睛相似度:</string>
+    <string name="Mouth_Similarity">嘴相似度:</string>
+    <string name="pre_value">0</string>
+    <string name="title_exit">退出</string>
+    <string name="title_more">更多</string>
+
+</resources>
