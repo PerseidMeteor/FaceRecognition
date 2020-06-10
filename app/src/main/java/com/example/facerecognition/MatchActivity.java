@@ -57,7 +57,6 @@ public class MatchActivity extends AppCompatActivity {
 
     static {
         try {
-            Log.e("loadLibrary", strLibraryName);
             System.loadLibrary(strLibraryName);
             //System.loadLibrary(Core.NATIVE_LIBRARY_NAME); // couldn't find "libopencv_java320.so"
         } catch (UnsatisfiedLinkError e) {
@@ -140,6 +139,7 @@ public class MatchActivity extends AppCompatActivity {
                 case AEG_CLOSE_PROGRESSBAR:
                     MainActivity.closeProgressDialog();
                     break;
+                default:break;
             }
         }};
 
@@ -210,7 +210,7 @@ public class MatchActivity extends AppCompatActivity {
             }
             else {
 
-            int maxRectArea = 0 * 0;
+            int maxRectArea = 0;
             Rect maxRect = null;
 
             int facenum = 0;
