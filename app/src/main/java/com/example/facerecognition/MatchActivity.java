@@ -155,11 +155,9 @@ public class MatchActivity extends AppCompatActivity {
         Mat matNose;
         Mat matMouth;
 
-        for(String string:pictureList){
-            Bitmap bitmap = BitmapFactory.decodeFile(string);
-            if(bitmap == null ){
-                Log.e(TAG, "CreateList: 生成图片错啦啦啦啦啦" );
-            }
+        //存储图像地址的最后一个元素时TAG，不是地址，故排除
+        for(int j = 0;j < pictureList.size()-1;++j){
+            Bitmap bitmap = BitmapFactory.decodeFile(pictureList.get(j));
             matFace = detect(mFaceDetector,bitmap,true);
             matEyes = detect(mEyesDetector, bitmap,true);
             matNose = detect(mNoseDetector, bitmap,false);
@@ -168,9 +166,8 @@ public class MatchActivity extends AppCompatActivity {
             bitmapList.add(bitmap);
         }
 
-        //存储图像地址的最后一个元素时TAG，不是地址，故排除
-        for(int i = 0;i< pircturelist.size()-1;++i){
-            for(int j = i+1;j < pircturelist.size()-1;++j){
+        for(int i = 0;i< bitmapList.size();++i){
+            for(int j = i+1;j < bitmapList.size();++j){
                 lists.add(Arrays.asList(bitmapList.get(i),bitmapList.get(j)));
                 similarities.add(compare(mats.get(i), mats.get(j)));
             }
@@ -194,7 +191,7 @@ public class MatchActivity extends AppCompatActivity {
             MatOfRect mRect = new MatOfRect();
             Rect[] object = objectDetector.detectObjectImage(gray, mRect);
 
-            if(flag == false) {
+            if(!flag) {
                 Rect rectTmp = null;
                 if (object != null) {
                     rectTmp = object[0];
@@ -251,11 +248,15 @@ public class MatchActivity extends AppCompatActivity {
     private double[] compare(Mat[] mat1,Mat[] mat2){
         double[] similarity = new double[4];
         for (int i = 0;i<4;++i){
+            similarity[i] = 0;
             if(mat1[i] == null || mat2[i] == null){
-                similarity[i] = 0;
                 continue;
             }
+            Mat hist_1 = new Mat();
+            Mat hist_2 = new Mat();
+
             Imgproc.resize(mat2[i],mat2[i],mat1[i].size());
+
             mat1[i].convertTo(mat1[i], CvType.CV_32F);
             mat2[i].convertTo(mat2[i], CvType.CV_32F);
 
@@ -263,11 +264,11 @@ public class MatchActivity extends AppCompatActivity {
             MatOfInt histSize = new MatOfInt(1000);
 
             Imgproc.calcHist(Arrays.asList(mat1[i]), new MatOfInt(0),
-                    new Mat(), mat1[i], histSize, ranges);
+                    new Mat(), hist_1, histSize, ranges);
             Imgproc.calcHist(Arrays.asList(mat2[i]), new MatOfInt(0),
-                    new Mat(), mat2[i], histSize, ranges);
+                    new Mat(), hist_2, histSize, ranges);
 
-            similarity[i] = Imgproc.compareHist(mat1[i], mat2[i], Imgproc.CV_COMP_CORREL);
+            similarity[i] = Imgproc.compareHist(hist_1, hist_2, Imgproc.CV_COMP_CORREL);
         }
         return similarity;
     }
